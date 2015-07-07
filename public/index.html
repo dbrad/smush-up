@@ -26,30 +26,30 @@
 
     <div class="container">
       <h1>Smush Up</h1>
-      <div class="container" ng-controller="SetController as setCtrl" ng-show="!setCtrl.lockedIn();">
-        <input type="button" class="btn btn-primary" value="Check All" ng-click="setCtrl.checkAll()">
-        <input type="button" class="btn btn-danger" value="Uncheck All" ng-click="setCtrl.uncheckAll()">
-        <input type="button" class="btn" ng-class="{'btn-danger': setCtrl.showDecks, 'btn-success': !setCtrl.showDecks}" value="{{setCtrl.showDecks ? 'Hide' : 'Show'}} Decks" ng-click="setCtrl.toggleShowDecks()">
+      <div class="container" ng-controller="SetController as setPicker" ng-show="setPicker.setPickStage();">
+        <input type="button" class="btn btn-primary" value="Check All" ng-click="setPicker.checkAll()">
+        <input type="button" class="btn btn-danger" value="Uncheck All" ng-click="setPicker.uncheckAll()">
+        <input type="button" class="btn" ng-class="{'btn-danger': setPicker.showDecks, 'btn-success': !setPicker.showDecks}" value="{{setPicker.showDecks ? 'Hide' : 'Show'}} Decks" ng-click="setPicker.toggleShowDecks()">
 
-        <div class="container" ng-repeat="set in setCtrl.sets" >
+        <div class="container" ng-repeat="set in setPicker.sets" >
           <div class="checkbox">
             <label>
-              <input type="checkbox" ng-model="set.selected" ng-change="setCtrl.parentCheck(set)"> <span>{{set.name}}</span>
+              <input type="checkbox" ng-model="set.selected" ng-change="setPicker.parentCheck(set)"> <span>{{set.name}}</span>
             </label>
           </div>
-          <div class="container" ng-show="setCtrl.showDecks">
+          <div class="container" ng-show="setPicker.showDecks">
             <div ng-repeat="faction in set.factions" class="checkbox">
               <label>
-                <input type="checkbox" ng-model="faction.selected" ng-change="setCtrl.childCheck(set, faction)">{{faction.name}} - ({{faction.description}})
+                <input type="checkbox" ng-model="faction.selected" ng-change="setPicker.childCheck(set, faction)">{{faction.name}} - ({{faction.description}})
               </label>
             </div>
           </div>
         </div>
 
-        <input type="button" class="btn btn-success" value="Use these decks" ng-click="setCtrl.lockIn()">
+        <input type="button" class="btn btn-success" value="Use these decks" ng-click="setPicker.moveToDeck()">
       </div>
-      <div>
-
+      <div class="container" ng-controller="DeckPickerController as deckPicker" ng-show="deckPicker.deckPickStage()">
+        <h2>{{ deckPicker.getSelectedCount() }}</h2>
       </div>
     </div>
 
