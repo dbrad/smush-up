@@ -4,35 +4,35 @@
     "factions" : [
       {
         "name" : "Aliens",
-        "description" : ""
+        "description" : "Gain victory points without breaking bases."
       },
       {
         "name" : "Dinosaurs",
-        "description" : ""
+        "description" : "High-powered minions break bases quickly."
       },
       {
         "name" : "Ninjas",
-        "description" : ""
+        "description" : "Destroy minions and sneak onto bases at the last second."
       },
       {
         "name" : "Pirates",
-        "description" : ""
+        "description" : "Move around from base to base and destroy weak minions."
       },
       {
         "name" : "Robots",
-        "description" : ""
+        "description" : "Play lots of weak minions at once."
       },
       {
         "name" : "Tricksters",
-        "description" : ""
+        "description" : "Force other players to discard and make bases undesirable to play on."
       },
       {
         "name" : "Wizards",
-        "description" : ""
+        "description" : "Draw quickly, and play several cards per turn."
       },
       {
         "name" : "Zombies",
-        "description" : ""
+        "description" : "Play minions from the discard pile."
       }
     ]
   },
@@ -41,19 +41,19 @@
     "factions" : [
       {
         "name" : "Bear Cavalry",
-        "description" : ""
+        "description" : "Move other players' minions."
       },
       {
         "name" : "Ghosts",
-        "description" : ""
+        "description" : "Benefit from discarding and having 2 or fewer cards in their hand."
       },
       {
         "name" : "Killer Plants",
-        "description" : ""
+        "description" : "Search your deck for weak minions, play extra minions, and setup multi-turn abilities."
       },
       {
         "name" : "Steampunks",
-        "description" : ""
+        "description" : "Powerful base actions that can be played from the discard pile."
       }
     ]
   },
@@ -62,19 +62,19 @@
     "factions" : [
       {
         "name" : "Elder Things",
-        "description" : ""
+        "description" : "Give Madness to other players, and strong minions that are difficult to play."
       },
       {
         "name" : "Innsmouth",
-        "description" : ""
+        "description" : "Lots of power 2 minions that work together well."
       },
       {
         "name" : "Minions of Cthulhu",
-        "description" : ""
+        "description" : "Play lots of actions, slow the game down, and gain Madness."
       },
       {
         "name" : "Miskatonic University",
-        "description" : ""
+        "description" : "Gain, use, and lose Madness to accomplish a little of everything."
       }
     ]
   },
@@ -83,19 +83,19 @@
     "factions" : [
       {
         "name" : "Cyborg Apes",
-        "description" : ""
+        "description" : "Play actions on minions to power them up."
       },
       {
         "name" : "Shapeshifters",
-        "description" : ""
+        "description" : "Copy other players' power and abilities."
       },
       {
         "name" : "Super Spies",
-        "description" : ""
+        "description" : "Force other players to discard and play special abilities while bases are scoring."
       },
       {
         "name" : "Time Travelers",
-        "description" : ""
+        "description" : "Replay actions and minions."
       }
     ]
   },
@@ -104,19 +104,19 @@
     "factions" : [
       {
         "name" : "Giant Ants",
-        "description" : ""
+        "description" : "Play and move +1 power counters on your minions."
       },
       {
         "name" : "Mad Scientists",
-        "description" : ""
+        "description" : "Play and manipulate +1 power counters on your minions."
       },
       {
         "name" : "Vampires",
-        "description" : ""
+        "description" : "Destroy minions to gain power."
       },
       {
         "name" : "Werewolves",
-        "description" : ""
+        "description" : "Gain power on your turn and destroy minions."
       }
     ]
   },

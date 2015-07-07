@@ -16,165 +16,16 @@
     <link rel="stylesheet" href="/css/bootstrap-theme.css" media="screen">
     <script type="text/javascript">
       var availableDecks = [];
-      var sets = {
-        "core" : {
-          "name": "Core Set",
-          "factions" : [
-            {
-              "name" : "Aliens",
-              "description" : ""
-            },
-            {
-              "name" : "Dinosaurs",
-              "description" : ""
-            },
-            {
-              "name" : "Ninjas",
-              "description" : ""
-            },
-            {
-              "name" : "Pirates",
-              "description" : ""
-            },
-            {
-              "name" : "Robots",
-              "description" : ""
-            },
-            {
-              "name" : "Tricksters",
-              "description" : ""
-            },
-            {
-              "name" : "Wizards",
-              "description" : ""
-            },
-            {
-              "name" : "Zombies",
-              "description" : ""
-            }
-          ]
-        },
-        "awesome-level-9000" : {
-          "name" : "Awesome Level 9000",
-          "factions" : [
-            {
-              "name" : "Bear Cavalry",
-              "description" : ""
-            },
-            {
-              "name" : "Ghosts",
-              "description" : ""
-            },
-            {
-              "name" : "Killer Plants",
-              "description" : ""
-            },
-            {
-              "name" : "Steampunks",
-              "description" : ""
-            }
-          ]
-        },
-        "the-obligatory-cthulhu-set" : {
-          "name" : "The Obligatory Cthulhu Set",
-          "factions" : [
-            {
-              "name" : "Elder Things",
-              "description" : ""
-            },
-            {
-              "name" : "Innsmouth",
-              "description" : ""
-            },
-            {
-              "name" : "Minions of Cthulhu",
-              "description" : ""
-            },
-            {
-              "name" : "Miskatonic University",
-              "description" : ""
-            }
-          ]
-        },
-        "science-fiction-double-feature" : {
-          "name" : "Science Fiction Double Feature",
-          "factions" : [
-            {
-              "name" : "Cyborg Apes",
-              "description" : ""
-            },
-            {
-              "name" : "Shapeshifters",
-              "description" : ""
-            },
-            {
-              "name" : "Super Spies",
-              "description" : ""
-            },
-            {
-              "name" : "Time Travelers",
-              "description" : ""
-            }
-          ]
-        },
-        "monster-smash" : {
-          "name" : "Monster Smash",
-          "factions" : [
-            {
-              "name" : "Giant Ants",
-              "description" : ""
-            },
-            {
-              "name" : "Mad Scientists",
-              "description" : ""
-            },
-            {
-              "name" : "Vampires",
-              "description" : ""
-            },
-            {
-              "name" : "Werewolves",
-              "description" : ""
-            }
-          ]
-        },
-        "the-big-geeky-box" : {
-          "name" : "The Big Geeky Box",
-          "factions" : [
-            {
-              "name" : "Geeks",
-              "description" : " Interrupt other players' turns and disrupt their plans."
-            }
-          ]
-        },
-        "pretty-pretty-smash-up" : {
-          "name" : "Pretty Pretty Smash Up",
-          "factions" : [
-            {
-              "name" : "Fairies",
-              "description" : "Play extra cards and manipulate actions played on minions."
-            },
-            {
-              "name" : "Kitty Cats",
-              "description" : "Take control of other player's minions and destroy them."
-            },
-            {
-              "name" : "Mythic Horses",
-              "description" : "Benefit from having lots of minions together."
-            },
-            {
-              "name" : "Princesses",
-              "description" : "A few strong minions."
-            }
-          ]
-        }
-      }
 
       //$(function() {
       //  (function() {
           var app = angular.module("smushUp", []);
-          app.controller("SetController", function() {
-            this.sets = sets;
+          app.controller("SetController", function($http) {
+            var self = this;
+            $http.get("/factions.json")
+            .success(function(data) {
+              self.sets = data;
+            });
           });
       //  })();
     //  });
@@ -182,7 +33,7 @@
     <title></title>
   </head>
   <body>
-    <div ng-controller="SetController as set">
+    <div class="container-fluid" ng-controller="SetController as set">
       <div ng-repeat="set in set.sets">
         <h3>{{set.name}}</h3>
         <ul>
