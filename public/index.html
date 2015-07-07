@@ -10,38 +10,48 @@
     <script src="/js/lib/toastr.js" charset="utf-8"></script>
     <script src="/js/lib/underscore.js" charset="utf-8"></script>
 
+    <script src="/js/app.js" charset="utf-8"></script>
+    <script src="/js/set_controller.js" charset="utf-8"></script>
+
     <link rel="stylesheet" href="/css/normalize.css" media="screen">
     <link rel="stylesheet" href="/css/toastr.css" media="screen">
     <link rel="stylesheet" href="/css/bootstrap.css" media="screen">
     <link rel="stylesheet" href="/css/bootstrap-theme.css" media="screen">
     <script type="text/javascript">
       var availableDecks = [];
-
-      //$(function() {
-      //  (function() {
-          var app = angular.module("smushUp", []);
-          app.controller("SetController", function($http) {
-            var self = this;
-            $http.get("/factions.json")
-            .success(function(data) {
-              self.sets = data;
-            });
-          });
-      //  })();
-    //  });
     </script>
     <title></title>
   </head>
   <body>
-    <div class="container-fluid" ng-controller="SetController as set">
-      <div ng-repeat="set in set.sets">
-        <h3>{{set.name}}</h3>
-        <ul>
-          <li ng-repeat="faction in set.factions">
-            {{faction.name}} <small>({{faction.description}})</small>
-          </li>
-        </ul>
+
+    <div class="container">
+      <h1>Smush Up</h1>
+      <div class="container" ng-controller="SetController as setCtrl" ng-show="!setCtrl.lockedIn();">
+        <input type="button" class="btn btn-primary" value="Check All" ng-click="setCtrl.checkAll()">
+        <input type="button" class="btn btn-danger" value="Uncheck All" ng-click="setCtrl.uncheckAll()">
+        <input type="button" class="btn" ng-class="{'btn-danger': setCtrl.showDecks, 'btn-success': !setCtrl.showDecks}" value="{{setCtrl.showDecks ? 'Hide' : 'Show'}} Decks" ng-click="setCtrl.toggleShowDecks()">
+
+        <div class="container" ng-repeat="set in setCtrl.sets" >
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" ng-model="set.selected" ng-change="setCtrl.parentCheck(set)"> <span>{{set.name}}</span>
+            </label>
+          </div>
+          <div class="container" ng-show="setCtrl.showDecks">
+            <div ng-repeat="faction in set.factions" class="checkbox">
+              <label>
+                <input type="checkbox" ng-model="faction.selected" ng-change="setCtrl.childCheck(set, faction)">{{faction.name}} - ({{faction.description}})
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <input type="button" class="btn btn-success" value="Use these decks" ng-click="setCtrl.lockIn()">
+      </div>
+      <div>
+
       </div>
     </div>
+
   </body>
 </html>
