@@ -12,20 +12,21 @@
 
     <script src="/js/app.js" charset="utf-8"></script>
     <script src="/js/set_controller.js" charset="utf-8"></script>
+    <script src="/js/deck_picker_controller.js" charset="utf-8"></script>
 
     <link rel="stylesheet" href="/css/normalize.css" media="screen">
     <link rel="stylesheet" href="/css/toastr.css" media="screen">
     <link rel="stylesheet" href="/css/bootstrap.css" media="screen">
     <link rel="stylesheet" href="/css/bootstrap-theme.css" media="screen">
-    <script type="text/javascript">
-      var availableDecks = [];
-    </script>
     <title></title>
   </head>
   <body>
 
     <div class="container">
       <h1>Smush Up</h1>
+      <div class="container" ng-controller="ErrorController as errorCtrl">
+        <h5 ng-repeat="error in errorCtrl.getAllErrors() track by $index">{{ error }}</h5>
+      </div>
       <div class="container" ng-controller="SetController as setPicker" ng-show="setPicker.setPickStage();">
         <input type="button" class="btn btn-primary" value="Check All" ng-click="setPicker.checkAll()">
         <input type="button" class="btn btn-danger" value="Uncheck All" ng-click="setPicker.uncheckAll()">
@@ -48,8 +49,19 @@
 
         <input type="button" class="btn btn-success" value="Use these decks" ng-click="setPicker.moveToDeck()">
       </div>
+
       <div class="container" ng-controller="DeckPickerController as deckPicker" ng-show="deckPicker.deckPickStage()">
-        <h2>{{ deckPicker.getSelectedCount() }}</h2>
+        <input type="button" class="btn btn-success" value="Start Selection" ng-click="deckPicker.startSelection()">
+        <br>
+        <h2>Player 1</h2>
+        <div ng-repeat="p1 in deckPicker.player_one">
+          {{ p1.name }}
+        </div>
+        <hr>
+        <h2>Player 2</h2>
+        <div ng-repeat="p2 in deckPicker.player_two">
+          {{ p2.name }}
+        </div>
       </div>
     </div>
 

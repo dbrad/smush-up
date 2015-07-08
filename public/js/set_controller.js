@@ -1,7 +1,7 @@
 (function() {
-  angular.module("smushUp").controller("SetController", ["$rootScope", "SmashUp", SetController]);
+  angular.module("smushUp").controller("SetController", ["$rootScope", "SmashUp", 'Errors', SetController]);
 
-  function SetController($rootScope, SmashUp) {
+  function SetController($rootScope, SmashUp, Errors) {
     if(!$rootScope.Stage)
       $rootScope.Stage = 0;
 
@@ -72,6 +72,7 @@
     };
 
     this.moveToDeck = function() {
+      Errors.clear();
       self.setStage(1);
       SmashUp.data = self.sets;
       SmashUp.notify();

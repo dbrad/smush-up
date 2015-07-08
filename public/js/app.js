@@ -23,29 +23,24 @@
     return SmashUp;
   });
 
-  angular.module('smushUp').controller("DeckPickerController", function($rootScope, SmashUp) {
-    var self = this;
-    this.sets = {};
+  angular.module('smushUp').factory('Errors', function() {
+    var Errors = {};
+    Errors.msgs = [];
 
-    this.updateSets = function() {
-      self.sets = SmashUp.data;
+    Errors.clear = function() {
+      Errors.msgs = [];
     };
-    SmashUp.regObv(this.updateSets);
-    this.getStage = function() {
-      return $rootScope.Stage;
-    };
-    this.setStage = function( value ) {
-      $rootScope.Stage = value;
+    Errors.add = function(value) {
+      Errors.msgs.push(value);
     };
 
-    this.getSelectedCount = function() {
-      return _.countBy(self.sets, function(set) {
-        return (set.selected ? "Sel" : "NotSel");
-      });
-    };
+    return Errors;
+  });
 
-    this.deckPickStage = function() {
-      return self.getStage() === 1;
+  angular.module('smushUp').controller("ErrorController", function(Errors) {
+    this.getAllErrors = function() {
+      return Errors.msgs;
     };
   });
+
 })();
