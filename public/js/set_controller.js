@@ -74,8 +74,6 @@
     this.moveToDeck = function() {
       self.setStage(1);
       SmashUp.data = self.sets;
-      console.log(self.sets);
-      console.log(SmashUp.data);
       SmashUp.notify();
     };
   }

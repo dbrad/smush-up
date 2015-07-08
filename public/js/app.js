@@ -39,8 +39,8 @@
     };
 
     this.getSelectedCount = function() {
-      return _.countBy(self.sets, function() {
-        return (self.sets.selected ? "Sel" : "NotSel");
+      return _.countBy(self.sets, function(set) {
+        return (set.selected ? "Sel" : "NotSel");
       });
     };
 
